@@ -1,0 +1,62 @@
+<template>
+   
+
+      <div class="container">
+          <div class="row">
+
+              <div show.bind="loading" style="text-align:center;">Please wait...<i class="fa fa-spinner fa-spin"></i></div>
+        
+              <div class="form-group" show.bind="!isValid">
+                <div class="alert alert-dismissible alert-danger" >
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  
+                  <p repeat.for="error of result.errors">${error}</p>
+                </div>
+                <p><span click.delegate="navigateToForgot()" class="btn btn-primary"><strong> Forgot my password</strong></span></p>
+              </div>
+
+            <div class="col-sm-6 col-sm-offset-3" show.bind="isValid">
+              <div class="page-header">
+                <h1>Reset Your Password</h1>
+              </div>
+              <form submit.delegate="reset()">
+                <div class="form-group">
+                  <label for="password" class="sr-only">New Password:</label>
+                  <input type="password" name="password" id="password" placeholder="New password" autocomplete="off" autofocus="" required="" pattern="^[^S]{4,}" title="At least 4 characters!" class="form-control" value.bind="password">
+                  <div class="progress" style="display: none;">
+                    <div role="progressbar" class="progress-bar"></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="confirm" class="sr-only">Confirm Password:</label>
+                  <input type="password" name="confirm" placeholder="Confirm your new password" autocomplete="off" required="" pattern="^[^S]{4,}" title="At least 4 characters!" class="form-control" value.bind="confirm">
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-reset">Set Password</button>
+                </div>
+
+                <div class="form-group">
+                  <div class="alert alert-dismissible alert-danger" show.bind="result.errors.length">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    
+                    <p repeat.for="error of result.errors">${error}</p>
+                  </div>
+                </div>
+
+                <div class="alert alert-dismissible alert-success" show.bind="resetPasswordSuccess">                  
+                  <p>Your password has been changed!</p>
+                  <p>Redirecting to Dashboard...<i class="fa fa-spinner fa-spin"></i></p>
+                </div>
+
+
+              </form>
+              <hr>
+              <p>Need to try again?<a route-href="route: forgot"><strong> Forgot my password</strong></a></p>
+            </div>
+
+            
+
+          </div>
+        </div>
+
+</template>

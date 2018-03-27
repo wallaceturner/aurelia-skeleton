@@ -1,0 +1,120 @@
+<template>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="page-header">
+          <h2>Profile Information</h2>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <p class="hidden-xs"><strong>Picture:</strong></p>
+            <p class="hidden-xs">
+            </p>
+          </div>
+          <div class="col-sm-4">
+            <p class="hidden-xs"><strong>Gravatar:</strong></p>
+            <p class="hidden-xs"><img src="https://gravatar.com/avatar/f43a88df1e9cb67bb9ca09038e1382d1?s=200&amp;d=retro" width="100" height="100" class="profile"></p>
+          </div>
+        </div>
+        <form action="/account/profile" method="POST">
+          <input type="hidden" name="_csrf" value="MJE6siR8-GTYqjDEwAbFvVkQyq-iybwHh824" class="form-control">
+          <div class="form-group">
+            <label for="name" class="sr-only">Name</label>
+            <input type="text" name="name" id="name" placeholder="Your Name" value="wallace turner" required="" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="email" class="sr-only">Email</label>
+            <input type="email" name="email" id="email" value="wallaceturner@gmail.com" required="" class="form-control">
+            <div id="hint"></div>
+          </div>
+          <div class="form-group">
+            <label for="email" class="sr-only">Mobile Phone</label>
+            <input type="tel" name="phoneMobile" id="phoneMobile" value="" placeholder="+1 (999) 999-9999" pattern="/(?:(?:+?1s*(?:[.-]s*)?)?(?:(s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]&zwnj;&#8203;)s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))s*(?:[.-]s*)?)([2-9]1[02-9]&zwnj;&#8203;|[2-9][02-9]1|[2-9][02-9]{2})s*(?:[.-]s*)?([0-9]{4})/" title="Phone Number: +1 (999) 999-9999" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="location" class="sr-only">Location</label>
+            <input type="text" name="location" id="location" placeholder="Anywhere, USA" value="" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="website" class="sr-only">Website</label>
+            <input type="url" name="website" id="website" placeholder="http://yoursite.here" value="" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="gender" class="sr-only">Gender</label>
+            <div class="radio">
+              <label>
+                <input type="radio" name="gender" value="male" data-toggle="radio">Male
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="gender" value="female" data-toggle="radio">Female
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn btn-primary"><i class="fa fa-check"></i>&nbsp;Update Profile</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-4">
+        <div class="page-header">
+          <h2>Social Accounts</h2>
+        </div>
+        <p>Link your accounts here. Then you can sign in using <strong>any</strong> linked account with <strong>one click!</strong></p><a href="/account/link/facebook" class="btn btn-block btn-social btn-success"><i class="fa fa-facebook fa-lg fa-fw"></i>&nbsp;Connect Facebook</a><a href="/account/link/twitter" class="btn btn-block btn-social btn-success"><i class="fa fa-twitter fa-lg fa-fw"></i>&nbsp;Connect Twitter</a><a href="/account/link/github" class="btn btn-block btn-social btn-success"><i class="fa fa-github fa-lg fa-fw"></i>&nbsp;Connect GitHub</a><a href="/account/link/google" class="btn btn-block btn-social btn-success"><i class="fa fa-google-plus fa-lg fa-fw"></i>&nbsp;Connect Google</a>
+        <div class="page-header">
+          <h2>Enhanced Security</h2>
+        </div>
+        <p><i class="fa fa-question-circle fa-fw"></i>Enhanced security adds an extra layer of protection to your account. Once enabled, a security code is required whenever you sign in. The code <strong>changes every 30 seconds</strong> making it <strong>very difficult for hackers</strong> to gain access to your account.</p><a href="/enable-enhanced-security" class="btn btn-block btn-success"><i class="fa fa-lock"></i>&nbsp;Enable Enhanced Security</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="page-header">
+          <h2>Change Your Password</h2>
+        </div>
+        <form action="/account/password" method="POST">
+          <input type="hidden" name="_csrf" value="MJE6siR8-GTYqjDEwAbFvVkQyq-iybwHh824" class="form-control">
+          <div class="form-group">
+            <label for="password" class="sr-only">New Password</label>
+            <input type="password" name="password" id="password" placeholder="New Password" autocomplete="off" required="" pattern="^[^S]{4,}" title="At least 4 characters!" class="form-control">
+            <div class="progress" style="display: none;">
+              <div role="progressbar" class="progress-bar"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword" class="sr-only">Confirm Password</label>
+            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm New Password" autocomplete="off" required="" pattern="^[^S]{4,}" title="At least 4 characters!" class="form-control">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn btn-primary"><i class="fa fa-check"></i>&nbsp;Change Password</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-sm-2"></div>
+      <div class="col-sm-4">
+        <div class="page-header">
+          <h2>Delete Account</h2>
+        </div>
+        <div id="accordion" class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading panel-button">
+              <p class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="noDecoration">Delete my account&nbsp;<b class="caret"></b></a></p>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse">
+              <div class="panel-body">
+                <p>You can delete your account anytime.</p>
+                <p>You can always sign up again if you want to come back!</p>
+                <form action="/account/delete" method="POST">
+                  <input type="hidden" name="_csrf" value="MJE6siR8-GTYqjDEwAbFvVkQyq-iybwHh824" class="form-control">
+                  <button type="submit" class="btn btn-block btn-danger"><i class="fa fa-trash-o"></i>&nbsp;Delete my account</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

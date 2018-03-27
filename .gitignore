@@ -1,0 +1,6 @@
+node_modules/
+app-ui/scripts/*
+app-ui/src/**/*.js
+app-ui/src/**/*.map
+app-server/**/*.js
+app-server/**/*.map

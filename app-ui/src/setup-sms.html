@@ -1,0 +1,21 @@
+<template>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="page-header">
+          <h2><i class="fa fa-phone"></i>&nbsp;We Need Your Mobile Phone Number:</h2>
+        </div>
+        <form action="/setup-sms" method="POST">
+          <input type="hidden" name="_csrf" value="TizF9Uw6-6VIoRiHTSPQr0sp8MAtFEdNUeik">
+          <div class="form-group">
+            <label for="email">Please confirm (or enter) your mobile phone number:</label>
+            <input type="tel" name="phoneMobile" id="phoneMobile" value="" placeholder="+1 (999) 999-9999" pattern="/(?:(?:+?1s*(?:[.-]s*)?)?(?:(s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]&zwnj;&#8203;)s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))s*(?:[.-]s*)?)([2-9]1[02-9]&zwnj;&#8203;|[2-9][02-9]1|[2-9][02-9]{2})s*(?:[.-]s*)?([0-9]{4})/" title="Phone Number: +1 (999) 999-9999" required="" class="form-control">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-success"><i class="fa fa-check"></i>&nbsp;Continue</button>&nbsp;<a href="/disable-enhanced-security" class="btn btn-danger"><i class="fa fa-times"></i>&nbsp;Cancel Enhanced Security</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>

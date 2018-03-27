@@ -1,0 +1,56 @@
+<template>
+    <require from='scriptinjector'></require>
+    	  
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3"><br><br>
+        <form submit.delegate="signup()">
+          <input type="hidden" name="_csrf" value="ga3aIJ5W-_5qmP_A0fMqPlUkFLiW6nuN5VG0">
+          <legend>Sign Up</legend>
+          <div class="form-group">
+            <label for="name" class="sr-only">Name:</label>
+            <input type="text" name="name" id="name" placeholder="Your Name" autofocus="" required="" class="form-control" value.bind="name">
+          </div>
+          <div class="form-group">
+            <label for="email" class="sr-only">Email:</label>
+            <input type="email" name="email" id="email" placeholder="Your email" required="" class="form-control" value.bind="email">
+            <div id="hint"></div>
+          </div>
+          <div class="form-group">
+            <label for="password" class="sr-only">Password:</label>
+            <input type="password" name="password" id="password" placeholder="Password" autocomplete="off" required="" pattern="^[^S]{4,}" title="At least 4 characters!" class="form-control" keyup.delegate="evaluateSecurity()" focus.trigger="evaluateSecurity()" value.bind="password">
+            <div class="progress" style="display: none;">
+              <div role="progressbar" class="progress-bar"></div>
+            </div>
+            <div class="difficulty"></div>
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword" class="sr-only">Confirm Password:</label>
+            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" autocomplete="off" required="" pattern="^[^S]{4,}" title="At least 4 characters!" class="form-control" value.bind="confirmPassword">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-success" disabled.bind="signingUp || signupResult.success"><i class="fa ${signingUp ? 'fa-spinner fa-spin': 'fa-check'}"></i></i>&nbsp;Sign Up</button>&nbsp;<a route-href="route: login;" class="btn btn-link">Already have an account?</a>
+          </div>
+
+          <div class="form-group">
+              <div class="alert alert-danger" show.bind="!signingUp && signupResult && !signupResult.success">
+                  <ul>
+                    <li repeat.for="error of signupResult.errors">
+                        <span>${error}</span>
+                    </li>
+                  </ul>
+              </div>
+              <div class="alert alert-success" show.bind="signupResult.success">
+                <p>${signupResult.message}</p>                
+            </div>
+            </div>
+
+        </form><br>
+        <p class="text-muted"><em>I accept Skeleton's<a href="/terms"> Terms of Use</a> and<a href="/privacy"> Privacy Policy.</a></em></p>
+      </div>
+    </div>
+  </div>
+
+  
+</template>
